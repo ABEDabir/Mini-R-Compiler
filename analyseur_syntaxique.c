@@ -16,21 +16,22 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
 
 
 
-void FUNCTION(){
+// void FUNCTION(){
 
-    Test_Symbole(PO_TOKEN,PO_ERR);
-    do{
-        Test_Symbole(ID_TOKEN, ID_ERR);
-        //   if(Sym_Cour.cls==AFF_TOKEN){
-        //     Test_Symbole(NUM_TOKEN, NUM_ERR);
-        // }
-    }
-    while(Sym_Cour.cls==VIR_TOKEN);
-    Test_Symbole(PF_TOKEN,PF_ERR);
-    Test_Symbole(AO_TOKEN,AO_ERR);
-    INST();
-    Test_Symbole(AF_TOKEN,AF_ERR);
-}
+//     Test_Symbole(PO_TOKEN,PO_ERR);
+//     do{
+//         Test_Symbole(ID_TOKEN, ID_ERR);
+//         //   if(Sym_Cour.cls==AFF_TOKEN){
+//         //     Test_Symbole(NUM_TOKEN, NUM_ERR);
+//         // }
+//     }
+//     while(Sym_Cour.cls==VIR_TOKEN);
+//     Test_Symbole(PF_TOKEN,PF_ERR);
+//     Test_Symbole(AO_TOKEN,AO_ERR);
+//     INST();
+//     Test_Symbole(AF_TOKEN,AF_ERR);
+// }
+
 void AFF(){
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
