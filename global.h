@@ -50,7 +50,8 @@ typedef enum
     TRUE_TOKEN,
     FALSE_TOKEN,
     AND_TOKEN,
-    OR_TOKEN
+    OR_TOKEN,
+    VECTOR_TOKEN
 
 } CODES_TOKENS;
 

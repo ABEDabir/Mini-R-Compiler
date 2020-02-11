@@ -15,27 +15,9 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
 }
 
 
-
-// void FUNCTION(){
-
-//     Test_Symbole(PO_TOKEN,PO_ERR);
-//     do{
-//         Test_Symbole(ID_TOKEN, ID_ERR);
-//         //   if(Sym_Cour.cls==AFF_TOKEN){
-//         //     Test_Symbole(NUM_TOKEN, NUM_ERR);
-//         // }
-//     }
-//     while(Sym_Cour.cls==VIR_TOKEN);
-//     Test_Symbole(PF_TOKEN,PF_ERR);
-//     Test_Symbole(AO_TOKEN,AO_ERR);
-//     INST();
-//     Test_Symbole(AF_TOKEN,AF_ERR);
-// }
-
 void AFF(){
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
-
     Test_Symbole(NUM_TOKEN, NUM_ERR);
 
 }
@@ -85,6 +67,7 @@ void PLUS_MOINS(){
             afficher_Erreur(MOINS_PLUS_ERR);
     }
 }
+
 void TERM(){
     FACT();
     if (Sym_Cour.cls == DIV_TOKEN || Sym_Cour.cls == MULT_TOKEN)
@@ -93,6 +76,7 @@ void TERM(){
         FACT();
     }
 }
+
 void EXPR(){
     TERM();
     if (Sym_Cour.cls == PLUS_TOKEN || Sym_Cour.cls == MOINS_TOKEN)
@@ -100,7 +84,6 @@ void EXPR(){
         PLUS_MOINS();
         TERM();
     }
-
 }
 
 void COND(){
@@ -108,6 +91,7 @@ void COND(){
     sym_suiv();
     EXPR();
 }
+
 //SI := IF(COND){INST} [ELSE{INST}|e]
 void SI()
 {
@@ -157,6 +141,5 @@ void INST()
         case IF_TOKEN: SI(); break;
         case WHILE_TOKEN:   TANTQUE(); break;
         case FOR_TOKEN: POUR(); break;
-        //case FUNCTION_TOKEN: FUNCTION();break;
     }
 }
