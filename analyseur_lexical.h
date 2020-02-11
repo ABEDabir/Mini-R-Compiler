@@ -11,7 +11,6 @@ int isseparateur();
 void lire_nombre();
 void lire_mot();
 void sym_suiv();
-void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR);
 
 
 

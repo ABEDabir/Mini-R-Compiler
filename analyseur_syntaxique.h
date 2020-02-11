@@ -5,6 +5,7 @@
 #include "errors.h"
 #include "analyseur_lexical.h"
 
+void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR);
 void FUNCTION();
 void AFF();
 void FACT();

@@ -1,4 +1,6 @@
 #include "analyseur_lexical.h"
+#include "errors.h"
+
 
 
 void afficher_Token()
@@ -228,18 +230,6 @@ void sym_suiv()
                 Car_Cour = fgetc(file);
         }
     }
-    //afficher_Token();
-}
-
-
-
-void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
-{
-    if (Sym_Cour.cls == cl)
-    {
-        sym_suiv();
-    }
-    else
-        afficher_Erreur(COD_ERR);
+    afficher_Token();
 }
 

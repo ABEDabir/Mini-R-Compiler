@@ -4,6 +4,18 @@
 
 #include "analyseur_syntaxique.h"
 
+void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
+{
+    if (Sym_Cour.cls == cl)
+    {
+        sym_suiv();
+    }
+    else
+        afficher_Erreur(COD_ERR);
+}
+
+
+
 void FUNCTION(){
 
     Test_Symbole(PO_TOKEN,PO_ERR);

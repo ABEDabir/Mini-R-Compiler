@@ -3,6 +3,7 @@
 //
 
 #include "errors.h"
+
 char *ErreurNames[] = {
         "ERR_FICH_VID",
         "ERR_CAR_INC",
