@@ -157,6 +157,6 @@ void INST()
         case IF_TOKEN: SI(); break;
         case WHILE_TOKEN:   TANTQUE(); break;
         case FOR_TOKEN: POUR(); break;
-        case FUNCTION_TOKEN: FUNCTION();break;
+        //case FUNCTION_TOKEN: FUNCTION();break;
     }
 }

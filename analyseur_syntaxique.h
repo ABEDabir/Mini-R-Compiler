@@ -1,7 +1,7 @@
 #ifndef COMPILATEURR_ANALYSEUR_SYNTAXIQUE_H
 #define COMPILATEURR_ANALYSEUR_SYNTAXIQUE_H
 
-#include "global.h"
+//#include "global.h"
 #include "errors.h"
 #include "analyseur_lexical.h"
 

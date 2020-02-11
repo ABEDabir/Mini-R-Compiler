@@ -10,7 +10,7 @@ void afficher_Token()
         if (Sym_Cour.cls != ERREUR_TOKEN)
             printf("%s \n", TokenNames[Sym_Cour.cls]);
         else
-            printf("%s \n", ErreurNames[Sym_Erreur]);
+            afficher_Erreur(ERREUR_TOKEN);
     }
 }
 
