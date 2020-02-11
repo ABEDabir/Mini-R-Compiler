@@ -1,8 +1,5 @@
-//#include "global.h"
+#include "global.h"
 #include "analyseur_syntaxique.h"
-
-// |--> Didn't understand! <--|
-// Erreurs Sym_Erreur;
 
 
 int main(int argc, char **argv)
