@@ -1,4 +1,3 @@
-BLOCK	::=	CONSTS VARS INSTS
 INST	::=	INST | AFFEC | SI | TANTQUE | epsilon
 AFFEC	::=	ID <-EXPR|ID=EXP
 SI	::=	if (COND) {INST}
@@ -10,6 +9,7 @@ RELOP	::=	= | != | < | > | <= | >=
 ADDOP	::=	+ | -
 MULOP	::=	* | /
 EXPR	::=	TERM { ADDOP TERM }
+SEQ ::= NUM:NUM
 TERM	::=	FACT { MULOP FACT }
 FACT	::=	ID | NUM | ( EXPR )
 ID	::=	     lettre {lettre | chiffre}
