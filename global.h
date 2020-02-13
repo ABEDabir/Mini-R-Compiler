@@ -8,6 +8,12 @@
 #include <string.h>
 #include <ctype.h>
 // Definitions
+#define LONGUEUR_MOT 200
+#define TAILLE_TOKEN_LISTE 40
+// definition d'un boolean
+typedef enum _boolean {
+    false, true
+} boolean;
 
 // typedef: enum tokens,
 typedef enum
@@ -52,7 +58,6 @@ typedef enum
     AND_TOKEN,
     OR_TOKEN,
     VECTOR_TOKEN
-
 } CODES_TOKENS;
 
 //CODES_TOKENS Sym_Cour, Sym_Prec;
@@ -62,9 +67,11 @@ typedef struct
     CODES_TOKENS cls;
     char nom[25];
 } CODES_LEX;
-CODES_LEX Sym_Cour, Sym_Prec;
-// structs: symbol,
 
+CODES_LEX Sym_Cour, Sym_Prec;
+
+// structs: symbol,
+/*
 typedef enum
 {
     TYPE_VAR,
@@ -86,19 +93,44 @@ typedef struct
 } _tab_symbole;
 
 _tab_symbole tab_symbole;
+*/
+// Table de symbole
+
+struct symbole_stocke {
+    char nom[LONGUEUR_MOT];
+    int addresse;
+    int longueur;
+    int offset;
+
+    /* Pour les vecteurs */
+    int start;
+    int end;
+};
+
+
 
 // Variable declaration
 FILE *file;
 char Car_Cour, Car_Prec;
 
-
 int ligne, col, i;
 char *chaine_p, chaine[100];
 
-void EXPR();
-void INSTS();
-void INST();
-void COND();
+int taille_table_symbole;
+int taille_max_table_symbole;
+struct symbole_stocke *table_symbole;
+
+int ligne_actuelle;
+int offset;
+
+int adresse_actuelle;
+
+int addresse_offset;
+
+//void EXPR();
+//void INSTS();
+//void INST();
+//void COND();
 
 
 #endif //COMPILATEURR_GLOBAL_H
