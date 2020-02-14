@@ -13,10 +13,11 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
 
 
 void AFF(){
+    ajouter_symbole();
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
     EXPR();
-    ajouter_symbole();
+    
 }
 
 void FACT()
