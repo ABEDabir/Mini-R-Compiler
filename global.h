@@ -8,6 +8,7 @@
 #include <string.h>
 #include <ctype.h>
 
+
 // Definitions
 #define LONGUEUR_MOT 200
 #define TAILLE_TOKEN_LISTE 40
@@ -15,7 +16,6 @@
 typedef enum _boolean {
     false, true
 } boolean;
-
 // typedef: enum tokens,
 typedef enum
 {
@@ -58,8 +58,6 @@ typedef enum
     FALSE_TOKEN,
     AND_TOKEN,
     OR_TOKEN,
-    VECTOR_TOKEN,
-    REPEAT_TOKEN,
     BREAK_TOKEN,
     PRINT_TOKEN,
 } CODES_TOKENS;
