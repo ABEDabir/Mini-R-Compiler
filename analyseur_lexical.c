@@ -41,7 +41,10 @@ char *TokenNames[] = {
         "FALSE_TOKEN",
         "AND_TOKEN",
         "OR_TOKEN",
-        "VECTOR_TOKEN"
+        "VECTOR_TOKEN",
+        "REPEAT_TOKEN",
+        "BREAK_TOKEN"
+
 
 };
 
@@ -136,6 +139,10 @@ void lire_mot()
         Sym_Cour.cls = TRUE_TOKEN;
     else if (!strcasecmp(chaine, "FALSE"))
         Sym_Cour.cls = FALSE_TOKEN;
+    else if (!strcasecmp(chaine, "REPEAT"))
+        Sym_Cour.cls = REPEAT_TOKEN;
+    else if (!strcasecmp(chaine, "break"))
+        Sym_Cour.cls = BREAK_TOKEN;   
     else if (!strcasecmp(chaine, "c"))
         Sym_Cour.cls = VECTOR_TOKEN;
     else

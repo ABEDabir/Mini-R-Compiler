@@ -57,7 +57,9 @@ typedef enum
     FALSE_TOKEN,
     AND_TOKEN,
     OR_TOKEN,
-    VECTOR_TOKEN
+    VECTOR_TOKEN,
+    REPEAT_TOKEN,
+    BREAK_TOKEN
 } CODES_TOKENS;
 
 //CODES_TOKENS Sym_Cour, Sym_Prec;

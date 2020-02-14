@@ -14,9 +14,10 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
 void AFF(){
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
-    Test_Symbole(NUM_TOKEN, NUM_ERR);
+    EXPR();
     ajouter_symbole();
 }
+
 void FACT()
 {
     switch (Sym_Cour.cls)
@@ -129,6 +130,19 @@ void POUR()
     Test_Symbole(AF_TOKEN,AF_ERR);
 }
 
+void REPEAT(){
+    Test_Symbole(REPEAT_TOKEN,REPEAT_ERR);
+    Test_Symbole(AO_TOKEN,AO_ERR);
+    INST();
+    if(Sym_Cour.cls == IF_TOKEN){
+        Test_Symbole(PO_TOKEN,PO_ERR);
+        COND();
+        Test_Symbole(PF_TOKEN,PF_ERR);
+        Test_Symbole(BREAK_TOKEN,BREAK_ERR);
+    }
+
+}
+
 void INST()
 {
     switch(Sym_Cour.cls)
@@ -137,5 +151,7 @@ void INST()
         case IF_TOKEN: SI(); break;
         case WHILE_TOKEN:   TANTQUE(); break;
         case FOR_TOKEN: POUR(); break;
+        case REPEAT_TOKEN: REPEAT(); break;
+
     }
 }

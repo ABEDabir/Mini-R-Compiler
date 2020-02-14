@@ -18,5 +18,6 @@ void SI();
 void TANTQUE();
 void POUR();
 void INST();
+void REPEAT();
 
 #endif //COMPILATEURR_ANALYSEUR_SYNTAXIQUE_H

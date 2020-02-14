@@ -38,7 +38,8 @@ char *Erreur[] = {
         "INTO_DOWNTO_ERR", "SYMBOLE_EXIST_ERR",
         "SYMBOLE_NOT_DECLARED_ERR", "SYMBOLE_CONST_MODIF_ERR",
         "SYMBOLE_PROGID_MODIF_ERR",
-        "AO_ERR","AF_ERR","IN_ERR","FUNCTION_ERR"};
+        "AO_ERR","AF_ERR","IN_ERR","FUNCTION_ERR", "REPEAT_ERR",
+        "BREAK_ERR"};
 
 void afficher_Erreur(ERREUR_TOKENS COD_ERR)
 {
