@@ -4,12 +4,15 @@
 
 int main(int argc, char **argv)
 {  
-    if (argc != 2){
+    /*if (argc != 2){
         printf("no input file\n");
         printf("Usage : %s FILE\n", argv[0]);
         exit(0);
-    }
-    file = fopen(argv[1], "r+");
+    }*/
+    ligne = 1;
+    col = 1;
+    init_table_symbole();
+    file = fopen("in", "r+");
     Car_Cour = fgetc(file);
     do
     {

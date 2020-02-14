@@ -29,8 +29,8 @@ char *Erreur[] = {
         "ID_ERR", "ERREUR_ERR",
         "EOF_ERR", "EG_ERR",
         "ELSE_ERR", "FOR_ERR",
-        "INTO_ERR", "DOWNTO_ERR",
-        "REPEAT_ERR", "UNTIL_ERR",
+        "INTO_ERR", "DOWNTO_ERR"
+        , "UNTIL_ERR",
         "CASE_EE", "OF_ERR",
         "PP_ERR", "CONST_VAR_BEGIN_ERR",
         "VAR_BEGIN_ERR", "MOINS_PLUS_ERR",

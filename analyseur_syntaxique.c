@@ -11,10 +11,11 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
 }
 
 void AFF(){
-    //ajouter_symbole();
+    ajouter_symbole();
+    printf("ajouter_symbole called!!\n");
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
-    EXPR();
+    Test_Symbole(NUM_TOKEN, NUM_ERR);
 }
 
 void FACT()
@@ -96,7 +97,13 @@ void SI()
     COND();
     Test_Symbole(PF_TOKEN,PF_ERR);
     Test_Symbole(AO_TOKEN,AO_ERR);
-    INST();
+    do
+    {
+        sym_suiv();
+        INST();
+    } while(Sym_Cour.cls != AF_TOKEN);
+    //} while(Car_Cour != '}');
+    //INST();
     Test_Symbole(AF_TOKEN,AF_ERR);
     if (Sym_Cour.cls == ELSE_TOKEN) {
         Test_Symbole(AO_TOKEN,AO_ERR);
@@ -112,7 +119,12 @@ void TANTQUE(){
     COND();
     Test_Symbole(PF_TOKEN,PF_ERR);
     Test_Symbole(AO_TOKEN, AO_ERR);
-    INST();
+    do
+    {
+        sym_suiv();
+        INST();
+    } while(Sym_Cour.cls != AF_TOKEN);
+    printf("waiting\n");
     Test_Symbole(AF_TOKEN,AF_ERR);
 }
 
@@ -127,7 +139,11 @@ void POUR()
     Test_Symbole(NUM_TOKEN,NUM_ERR);
     Test_Symbole(PF_TOKEN,PF_ERR);
     Test_Symbole(AO_TOKEN,AO_ERR);
-    INST();
+    do
+    {
+        sym_suiv();
+        INST();
+    } while(Sym_Cour.cls != AF_TOKEN);
     Test_Symbole(AF_TOKEN,AF_ERR);
 }
 
@@ -141,7 +157,11 @@ void PRINT(){
 void REPEAT(){
     Test_Symbole(REPEAT_TOKEN,REPEAT_ERR);
     Test_Symbole(AO_TOKEN,AO_ERR);
-    INST();
+    do
+    {
+        sym_suiv();
+        INST();
+    } while(Sym_Cour.cls == IF_TOKEN);
     if(Sym_Cour.cls == IF_TOKEN){
         Test_Symbole(PO_TOKEN,PO_ERR);
         COND();
@@ -162,6 +182,7 @@ void INST()
         case WHILE_TOKEN:   TANTQUE(); break;
         case FOR_TOKEN: POUR(); break;
         case REPEAT_TOKEN: REPEAT(); break;
+        default: printf("default INST()");
 
     }
 }

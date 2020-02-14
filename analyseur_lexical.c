@@ -67,6 +67,7 @@ int lire_comm()
         while ((fgetc(file) != '\n'))
         {
         }
+        col = 1;
         ligne++;
         Car_Cour = fgetc(file);
         return 1;
@@ -79,11 +80,6 @@ int isseparateur()
     if (isspace(Car_Cour) || Car_Cour == '#')
     {
         col++;
-        if (Car_Cour == '\n')
-        {
-            col = 1;
-            ligne++;
-        }
         if (Car_Cour == '#')
             return lire_comm();
         else
@@ -153,17 +149,23 @@ void sym_suiv()
 {
     chaine_p = chaine;
     int res;
+
     while(isblank(Car_Cour))
     {
         //printf("skip");
         Car_Cour=fgetc(file);
     }
 
+    if(Car_Cour == '\n') {
+        Car_Cour=fgetc(file);
+        return;
+    }
+
     while ((res = isseparateur()))
     {
         if (res == 2)
             return;
-    };
+    }
 
     if (isdigit(Car_Cour))
         lire_nombre();

@@ -19,13 +19,15 @@ static void changer_taille() {
 // ajouter un symbole à la table de symbole
 boolean ajouter_symbole() {
     // Vérifier d'abord que le symbole existe dans la table des symboles
-    if (symbole_existe() == -1) {
+    int index = symbole_existe();
+    if (index == -1) {
         // If there are no more space in the symbol table
         if (taille_table_symbole > taille_max_table_symbole) {
             changer_taille();
         }
         // ajout du symbole à la table
         strcpy(table_symbole[taille_table_symbole].nom, Sym_Cour.nom);
+        printf("%s added to the symbol table\n", table_symbole[taille_table_symbole].nom);
         table_symbole[taille_table_symbole].offset   = addresse_offset;
         table_symbole[taille_table_symbole].addresse = addresse_offset + adresse_actuelle++;
         //table_symbole[taille_table_symbole].valeur = atof(chaine);
@@ -33,8 +35,10 @@ boolean ajouter_symbole() {
         // Incrémentation de la taille de la table des symboles
         taille_table_symbole++;
     }
-    else
-        table_symbole[taille_table_symbole].valeur = atof(chaine);
+    else{
+        printf("%s is already in the symbol table\n", table_symbole[index].nom);
+    }
+
 }
 
 int symbole_existe() {
@@ -43,6 +47,9 @@ int symbole_existe() {
             return i;
     }
     return -1;
+}
+int get_symbole_id(){
+
 }
 
 // Obtenir l'adresse du symbole actuel
