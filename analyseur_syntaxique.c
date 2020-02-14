@@ -10,8 +10,6 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
         afficher_Erreur(COD_ERR);
 }
 
-
-
 void AFF(){
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
@@ -133,6 +131,13 @@ void POUR()
     Test_Symbole(AF_TOKEN,AF_ERR);
 }
 
+void PRINT(){
+    Test_Symbole(PRINT_TOKEN, PRINT_ERR);
+    Test_Symbole(PO_TOKEN, PO_ERR);
+    EXPR();
+    Test_Symbole(PF_TOKEN, PF_ERR);
+}
+
 void REPEAT(){
     Test_Symbole(REPEAT_TOKEN,REPEAT_ERR);
     Test_Symbole(AO_TOKEN,AO_ERR);
@@ -144,8 +149,9 @@ void REPEAT(){
         Test_Symbole(BREAK_TOKEN,BREAK_ERR);
     }
     Test_Symbole(AF_TOKEN,AF_ERR);
-
 }
+
+
 
 void INST()
 {

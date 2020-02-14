@@ -20,6 +20,7 @@ void TANTQUE();
 void POUR();
 void INST();
 void REPEAT();
+void PRINT();
 
 
 

@@ -60,7 +60,8 @@ typedef enum
     OR_TOKEN,
     VECTOR_TOKEN,
     REPEAT_TOKEN,
-    BREAK_TOKEN
+    BREAK_TOKEN,
+    PRINT_TOKEN,
 } CODES_TOKENS;
 
 //CODES_TOKENS Sym_Cour, Sym_Prec;
