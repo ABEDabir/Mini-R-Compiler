@@ -71,7 +71,8 @@ typedef enum
     SYMBOLE_PROGID_MODIF_ERR,AO_ERR,AF_ERR,
     IN_ERR,FUNCTION_ERR,
     REPEAT_ERR,
-    BREAK_ERR
+    BREAK_ERR,
+    PRINT_ERR
 } ERREUR_TOKENS;
 
 Erreurs Sym_Erreur;
