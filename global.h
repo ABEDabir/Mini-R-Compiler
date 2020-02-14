@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
+
 // Definitions
 #define LONGUEUR_MOT 200
 #define TAILLE_TOKEN_LISTE 40

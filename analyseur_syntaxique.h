@@ -7,6 +7,7 @@
 
 void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR);
 // void FUNCTION();
+
 void AFF();
 void FACT();
 void MULT_DIV();
@@ -19,5 +20,7 @@ void TANTQUE();
 void POUR();
 void INST();
 void REPEAT();
+
+
 
 #endif //COMPILATEURR_ANALYSEUR_SYNTAXIQUE_H

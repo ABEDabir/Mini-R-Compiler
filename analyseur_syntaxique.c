@@ -11,6 +11,7 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
 }
 
 
+
 void AFF(){
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
@@ -106,6 +107,7 @@ void SI()
         Test_Symbole(AF_TOKEN,AF_ERR);
     }
 }
+
 void TANTQUE(){
     Test_Symbole(WHILE_TOKEN, WHILE_ERR);
     Test_Symbole(PO_TOKEN,PO_ERR);
@@ -115,6 +117,7 @@ void TANTQUE(){
     INST();
     Test_Symbole(AF_TOKEN,AF_ERR);
 }
+
 void POUR()
 {
     Test_Symbole(FOR_TOKEN, FOR_ERR);
@@ -140,6 +143,7 @@ void REPEAT(){
         Test_Symbole(PF_TOKEN,PF_ERR);
         Test_Symbole(BREAK_TOKEN,BREAK_ERR);
     }
+    Test_Symbole(AF_TOKEN,AF_ERR);
 
 }
 
