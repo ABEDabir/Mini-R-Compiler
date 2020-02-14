@@ -15,6 +15,7 @@ void AFF(){
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
     Test_Symbole(NUM_TOKEN, NUM_ERR);
+    ajouter_symbole();
 }
 void FACT()
 {

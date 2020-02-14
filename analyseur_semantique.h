@@ -5,8 +5,8 @@
 void init_table_symbole();
 static void changer_taille();
 boolean ajouter_symbole();
-int symbole_existe();
 int get_address();
+int symbole_existe();
 int symbole_specifique_existe(char *symbole);
 
 #endif //COMPILATEURR_ANALYSEUR_SEMANTIQUE_H

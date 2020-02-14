@@ -98,13 +98,14 @@ _tab_symbole tab_symbole;
 
 struct symbole_stocke {
     char nom[LONGUEUR_MOT];
+    int valeur;
     int addresse;
     int longueur;
     int offset;
 
     /* Pour les vecteurs */
-    int start;
-    int end;
+    //int start;
+    //int end;
 };
 
 

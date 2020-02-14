@@ -27,9 +27,8 @@ boolean ajouter_symbole() {
         // ajout du symbole à la table
         strcpy(table_symbole[taille_table_symbole].nom, Sym_Cour.nom);
         table_symbole[taille_table_symbole].offset   = addresse_offset;
-        table_symbole[taille_table_symbole].end      = 0;
-
         table_symbole[taille_table_symbole].addresse = addresse_offset + adresse_actuelle++;
+        table_symbole[taille_table_symbole].valeur = atof(chaine);
 
         // Incrémentation de la taille de la table des symboles
         taille_table_symbole++;

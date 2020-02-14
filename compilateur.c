@@ -15,5 +15,5 @@ int main(int argc, char **argv)
     {
         sym_suiv();
         INST();
-    }while(Car_Cour!=EOF);
+    } while(Car_Cour!=EOF);
 }
