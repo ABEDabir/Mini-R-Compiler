@@ -47,3 +47,7 @@ void afficher_Erreur(ERREUR_TOKENS COD_ERR)
     printf("%s\n",Sym_Cour.nom);
     exit(EXIT_FAILURE);
 }
+void afficher_erreur_semantique(char *Symbole){
+    printf("Erreur semantique : ");
+    printf("La variable %s n'existe pas!\n", Symbole);
+}

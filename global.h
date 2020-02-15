@@ -123,17 +123,64 @@ int taille_table_symbole;
 int taille_max_table_symbole;
 struct symbole_stocke *table_symbole;
 
-int ligne_actuelle;
 int offset;
 
-int adresse_actuelle;
 
-int addresse_offset;
+
+int PC;
+int PH;
+int adresse_offset;
 
 //void EXPR();
 //void INSTS();
 //void INST();
 //void COND();
+
+
+typedef enum
+{
+    NOP,
+    ADD,
+    SUB,
+    MUL,
+    DIV,
+    EQL,
+    NEQ,
+    GTR,
+    LSS,
+    GEQ,
+    LEQ,
+    LDA,
+    LDI,
+    PRN,
+    INT,
+    HLT,
+    INN,
+    STO,
+    LDV,
+    BZE,
+    BRN,
+
+} MNEMONIQUES;
+
+typedef struct
+{
+    MNEMONIQUES mne;
+    int suite;
+} instruction;
+
+
+instruction PCode[50], PileHisto[50];
+
+char *MNEMONIQUESNAMES[21];
+
+void init_pseudo_code();
+void generer(MNEMONIQUES M);
+void generer_val(MNEMONIQUES M, int val);
+void PH_generer(MNEMONIQUES M);
+void PH_generer_val(MNEMONIQUES M, int val);
+
+instruction SommetPileHisto();
 
 
 #endif //COMPILATEURR_GLOBAL_H

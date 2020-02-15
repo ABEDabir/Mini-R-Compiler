@@ -1,5 +1,6 @@
 #include "global.h"
 #include "analyseur_syntaxique.h"
+#include "pseudo_code.h"
 
 
 int main(int argc, char **argv)
@@ -12,6 +13,7 @@ int main(int argc, char **argv)
     ligne = 1;
     col = 1;
     init_table_symbole();
+    init_pseudo_code();
     file = fopen("in", "r+");
     Car_Cour = fgetc(file);
     do
@@ -19,4 +21,16 @@ int main(int argc, char **argv)
         sym_suiv();
         INST();
     } while(Car_Cour!=EOF);
+
+    for (int i = 0; i <= PC; i++)
+    {
+        if (PCode[i].mne == LDI || PCode[i].mne == LDA || PCode[i].mne == INT || PCode[i].mne == BZE || PCode[i].mne == BRN)
+        {
+            printf("%3d : %s %d\n",i, MNEMONIQUESNAMES[PCode[i].mne], PCode[i].suite);
+        }
+        else
+        {
+            printf("%3d : %s\n",i, MNEMONIQUESNAMES[PCode[i].mne]);
+        }
+    }
 }

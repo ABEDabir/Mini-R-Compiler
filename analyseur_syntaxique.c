@@ -12,10 +12,12 @@ void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR)
 
 void AFF(){
     ajouter_symbole();
-    printf("ajouter_symbole called!!\n");
+    generer_val(INT, offset + 1);
+    generer_val(LDA, table_symbole[symbole_existe()].addresse);
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(AFF_TOKEN, AFF_ERR);
-    Test_Symbole(NUM_TOKEN, NUM_ERR);
+    EXPR();
+    generer(STO);
 }
 
 void FACT()
@@ -23,9 +25,13 @@ void FACT()
     switch (Sym_Cour.cls)
     {
         case ID_TOKEN:
+            if(symbole_specifique_existe(Sym_Cour.nom) == -1) afficher_erreur_semantique(Sym_Cour.nom);
+            generer_val(LDA, table_symbole[symbole_existe()].addresse);
+            generer(LDV);
             sym_suiv();
             break;
         case NUM_TOKEN:
+            generer_val(LDI, atoi(chaine));
             sym_suiv();
             break;
         case PO_TOKEN:
@@ -42,9 +48,11 @@ void MULT_DIV(){
     {
         case MULT_TOKEN:
             sym_suiv();
+            PH_generer(MUL);
             break;
         case DIV_TOKEN:
             sym_suiv();
+            PH_generer(DIV);
             break;
         default:
             afficher_Erreur(MULT_DIV_ERR);
@@ -56,9 +64,11 @@ void PLUS_MOINS(){
     {
         case PLUS_TOKEN:
             sym_suiv();
+            PH_generer(ADD);
             break;
         case MOINS_TOKEN:
             sym_suiv();
+            PH_generer(SUB);
             break;
         default:
             afficher_Erreur(MOINS_PLUS_ERR);
@@ -71,6 +81,7 @@ void TERM(){
     {
         MULT_DIV();
         FACT();
+        generer(SommetPileHisto().mne);
     }
 }
 
@@ -80,11 +91,35 @@ void EXPR(){
     {
         PLUS_MOINS();
         TERM();
+        generer(SommetPileHisto().mne);
     }
 }
 
 void COND(){
     EXPR();
+    switch (Sym_Cour.cls)
+    {
+        case EG_TOKEN:
+            PH_generer(EQL);
+            break;
+        case DIFF_TOKEN:
+            PH_generer(NEQ);
+            break;
+        case INF_TOKEN:
+            PH_generer(LSS);
+            break;
+        case SUP_TOKEN:
+            PH_generer(GTR);
+            break;
+        case INFEG_TOKEN:
+            PH_generer(LEQ);
+            break;
+        case SUPEG_TOKEN:
+            PH_generer(GEQ);
+            break;
+        default:
+            afficher_Erreur(ERREUR_ERR);
+    }
     sym_suiv();
     EXPR();
 }
@@ -95,6 +130,8 @@ void SI()
     Test_Symbole(IF_TOKEN, IF_ERR);
     Test_Symbole(PO_TOKEN, PO_ERR);
     COND();
+    int pc = PC +1;
+    generer_val(BZE, pc);
     Test_Symbole(PF_TOKEN,PF_ERR);
     Test_Symbole(AO_TOKEN,AO_ERR);
     do
@@ -102,6 +139,9 @@ void SI()
         sym_suiv();
         INST();
     } while(Sym_Cour.cls != AF_TOKEN);
+    int _pc = PC + 1;
+    generer_val(BRN, _pc);
+    PCode[pc].suite = PC + 1;
     //} while(Car_Cour != '}');
     //INST();
     Test_Symbole(AF_TOKEN,AF_ERR);
@@ -109,6 +149,7 @@ void SI()
         Test_Symbole(AO_TOKEN,AO_ERR);
         sym_suiv();
         INST();
+        PCode[_pc].suite = PC + 1;
         Test_Symbole(AF_TOKEN,AF_ERR);
     }
 }
@@ -117,6 +158,8 @@ void TANTQUE(){
     Test_Symbole(WHILE_TOKEN, WHILE_ERR);
     Test_Symbole(PO_TOKEN,PO_ERR);
     COND();
+    int pc = PC + 1;
+    generer_val(BZE, pc);
     Test_Symbole(PF_TOKEN,PF_ERR);
     Test_Symbole(AO_TOKEN, AO_ERR);
     do
@@ -126,16 +169,30 @@ void TANTQUE(){
     } while(Sym_Cour.cls != AF_TOKEN);
     printf("waiting\n");
     Test_Symbole(AF_TOKEN,AF_ERR);
+    PCode[pc].suite = PC + 1;
 }
 
 void POUR()
 {
     Test_Symbole(FOR_TOKEN, FOR_ERR);
     Test_Symbole(PO_TOKEN,PO_ERR);
+    ajouter_symbole();
+    generer_val(INT, offset + 1);
+    generer_val(LDA, table_symbole[symbole_existe()].addresse);
     Test_Symbole(ID_TOKEN, ID_ERR);
     Test_Symbole(IN_TOKEN, IN_ERR);
+    generer_val(LDI, atoi(chaine));
+    generer(STO);
     Test_Symbole(NUM_TOKEN, NUM_ERR);
     Test_Symbole(PP_TOKEN,PP_ERR);
+    int end = atoi(chaine);
+    generer_val(LDA, table_symbole[symbole_existe()].addresse);
+    int pc = PC;
+    generer(LDV);
+    generer_val(LDI, end);
+    generer(LEQ);
+    int _pc = PC;
+    generer_val(BZE, PC + 1);
     Test_Symbole(NUM_TOKEN,NUM_ERR);
     Test_Symbole(PF_TOKEN,PF_ERR);
     Test_Symbole(AO_TOKEN,AO_ERR);
@@ -144,18 +201,21 @@ void POUR()
         sym_suiv();
         INST();
     } while(Sym_Cour.cls != AF_TOKEN);
+    generer_val(LDA, table_symbole[symbole_existe()].addresse);
+    generer_val(LDA, table_symbole[symbole_existe()].addresse);
+    generer(LDV);
+    generer_val(LDI, 1);
+    generer(ADD);
+    generer(STO);
+    generer_val(BRN, pc);
+    PCode[_pc].suite = PC+1;
     Test_Symbole(AF_TOKEN,AF_ERR);
 }
 
-void PRINT(){
-    Test_Symbole(PRINT_TOKEN, PRINT_ERR);
-    Test_Symbole(PO_TOKEN, PO_ERR);
-    EXPR();
-    Test_Symbole(PF_TOKEN, PF_ERR);
-}
 
 void REPEAT(){
     Test_Symbole(REPEAT_TOKEN,REPEAT_ERR);
+    int pc = PC;
     Test_Symbole(AO_TOKEN,AO_ERR);
     do
     {
@@ -165,6 +225,7 @@ void REPEAT(){
     if(Sym_Cour.cls == IF_TOKEN){
         Test_Symbole(PO_TOKEN,PO_ERR);
         COND();
+        generer_val(BZE, pc + 1);
         Test_Symbole(PF_TOKEN,PF_ERR);
         Test_Symbole(BREAK_TOKEN,BREAK_ERR);
     }
@@ -182,7 +243,6 @@ void INST()
         case WHILE_TOKEN:   TANTQUE(); break;
         case FOR_TOKEN: POUR(); break;
         case REPEAT_TOKEN: REPEAT(); break;
-        default: printf("default INST()");
 
     }
 }

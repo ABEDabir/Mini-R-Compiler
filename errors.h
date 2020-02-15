@@ -76,5 +76,6 @@ typedef enum
 Erreurs Sym_Erreur;
 
 void afficher_Erreur(ERREUR_TOKENS COD_ERR);
+void afficher_erreur_semantique(char *Symbole);
 
 #endif //COMPILATEURR_ERRORS_H

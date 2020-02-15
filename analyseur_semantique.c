@@ -5,7 +5,7 @@
 void init_table_symbole() {
     taille_table_symbole = 0;
     taille_max_table_symbole = 10;
-    adresse_actuelle = 0;
+    PC = 0;
 
     table_symbole = malloc(taille_max_table_symbole * sizeof(struct symbole_stocke));
 }
@@ -18,25 +18,27 @@ static void changer_taille() {
 
 // ajouter un symbole à la table de symbole
 boolean ajouter_symbole() {
+
     // Vérifier d'abord que le symbole existe dans la table des symboles
     int index = symbole_existe();
     if (index == -1) {
+        adresse_offset++;
         // If there are no more space in the symbol table
         if (taille_table_symbole > taille_max_table_symbole) {
             changer_taille();
         }
         // ajout du symbole à la table
         strcpy(table_symbole[taille_table_symbole].nom, Sym_Cour.nom);
-        printf("%s added to the symbol table\n", table_symbole[taille_table_symbole].nom);
-        table_symbole[taille_table_symbole].offset   = addresse_offset;
-        table_symbole[taille_table_symbole].addresse = addresse_offset + adresse_actuelle++;
+        //printf("%s added to the symbol table\n", table_symbole[taille_table_symbole].nom);
+        table_symbole[taille_table_symbole].offset   = adresse_offset;
+        table_symbole[taille_table_symbole].addresse = adresse_offset + PC++;
         //table_symbole[taille_table_symbole].valeur = atof(chaine);
 
         // Incrémentation de la taille de la table des symboles
         taille_table_symbole++;
     }
     else{
-        printf("%s is already in the symbol table\n", table_symbole[index].nom);
+        return 0;
     }
 
 }
@@ -47,9 +49,6 @@ int symbole_existe() {
             return i;
     }
     return -1;
-}
-int get_symbole_id(){
-
 }
 
 // Obtenir l'adresse du symbole actuel
@@ -74,4 +73,12 @@ int symbole_specifique_existe(char *symbole) {
             return i;
     }
     return -1;
+}
+
+void afficher_table_symbole(){
+    printf("\n\n");
+    printf("====================================\n");
+    printf("======== Table des symboles ========\n");
+    printf("====================================\n");
+    printf("  Symbole | Adresse | Offset | ");
 }

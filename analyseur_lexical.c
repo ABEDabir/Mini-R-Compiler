@@ -161,6 +161,8 @@ void sym_suiv()
         return;
     }
 
+    if(Car_Cour == EOF) return;
+
     while ((res = isseparateur()))
     {
         if (res == 2)
