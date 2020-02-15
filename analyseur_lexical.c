@@ -158,6 +158,8 @@ void sym_suiv()
 
     if(Car_Cour == '\n' || Car_Cour == '\r') {
         Car_Cour=fgetc(file);
+        ligne++;
+        col = 1;
         return;
     }
 

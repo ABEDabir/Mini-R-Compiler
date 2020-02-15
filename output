@@ -1,0 +1,137 @@
+La liste des tokens : 
+ID_TOKEN 
+AFF_TOKEN 
+NUM_TOKEN 
+ID_TOKEN 
+AFF_TOKEN 
+NUM_TOKEN 
+ID_TOKEN 
+AFF_TOKEN 
+NUM_TOKEN 
+ID_TOKEN 
+AFF_TOKEN 
+NUM_TOKEN 
+IF_TOKEN 
+PO_TOKEN 
+ID_TOKEN 
+EG_TOKEN 
+NUM_TOKEN 
+PF_TOKEN 
+AO_TOKEN 
+ID_TOKEN 
+AFF_TOKEN 
+ID_TOKEN 
+PLUS_TOKEN 
+NUM_TOKEN 
+ID_TOKEN 
+AFF_TOKEN 
+ID_TOKEN 
+PLUS_TOKEN 
+NUM_TOKEN 
+AF_TOKEN 
+FOR_TOKEN 
+PO_TOKEN 
+ID_TOKEN 
+IN_TOKEN 
+NUM_TOKEN 
+PP_TOKEN 
+NUM_TOKEN 
+PF_TOKEN 
+AO_TOKEN 
+ID_TOKEN 
+AFF_TOKEN 
+ID_TOKEN 
+PLUS_TOKEN 
+NUM_TOKEN 
+ID_TOKEN 
+AFF_TOKEN 
+ID_TOKEN 
+MOINS_TOKEN 
+NUM_TOKEN 
+AF_TOKEN 
+
+
+================================
+====== Table des symboles ======
+================================
+ Symbole  |  Adresse  |  Offset 
+         a |         0 |       1 
+         b |         6 |       2 
+         c |        12 |       3 
+         d |        18 |       4 
+         i |        43 |       5 
+================================
+
+
+Le pseudo-code :
+
+  0 : NOP
+  1 : INT 0
+  2 : LDA 0
+  3 : LDI 1
+  4 : STO
+  5 : NOP
+  6 : INT 0
+  7 : LDA 6
+  8 : LDI 2
+  9 : STO
+ 10 : NOP
+ 11 : INT 0
+ 12 : LDA 12
+ 13 : LDI 3
+ 14 : STO
+ 15 : NOP
+ 16 : INT 0
+ 17 : LDA 18
+ 18 : LDI 4
+ 19 : STO
+ 20 : LDA 12
+ 21 : LDV
+ 22 : LDI 7
+ 23 : BZE 39
+ 24 : INT 0
+ 25 : LDA 0
+ 26 : LDA 0
+ 27 : LDV
+ 28 : LDI 5
+ 29 : ADD
+ 30 : STO
+ 31 : INT 0
+ 32 : LDA 6
+ 33 : LDA 6
+ 34 : LDV
+ 35 : LDI 1
+ 36 : ADD
+ 37 : STO
+ 38 : BRN 38
+ 39 : NOP
+ 40 : INT 0
+ 41 : LDA 43
+ 42 : LDI 1
+ 43 : STO
+ 44 : LDA 0
+ 45 : LDV
+ 46 : LDI 5
+ 47 : LEQ
+ 48 : BZE 48
+ 49 : INT 0
+ 50 : LDA 0
+ 51 : LDA 0
+ 52 : LDV
+ 53 : LDI 1
+ 54 : ADD
+ 55 : STO
+ 56 : INT 0
+ 57 : LDA 6
+ 58 : LDA 6
+ 59 : LDV
+ 60 : LDI 1
+ 61 : SUB
+ 62 : STO
+ 63 : LDA 0
+ 64 : LDA 0
+ 65 : LDV
+ 66 : LDI 1
+ 67 : ADD
+ 68 : STO
+ 69 : BRN 44

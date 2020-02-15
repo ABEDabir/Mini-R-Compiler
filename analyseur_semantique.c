@@ -77,8 +77,13 @@ int symbole_specifique_existe(char *symbole) {
 
 void afficher_table_symbole(){
     printf("\n\n");
-    printf("====================================\n");
-    printf("======== Table des symboles ========\n");
-    printf("====================================\n");
-    printf("  Symbole | Adresse | Offset | ");
+    printf("================================\n");
+    printf("====== Table des symboles ======\n");
+    printf("================================\n");
+    printf(" Symbole  |  Adresse  |  Offset \n");
+    for(int i = 0; i < taille_table_symbole ; i++) {
+		printf("%10s | %9d | %7d \n", table_symbole[i].nom, table_symbole[i].addresse, table_symbole[i].offset);
+	}
+    printf("================================\n");
+    printf("\n\n");
 }

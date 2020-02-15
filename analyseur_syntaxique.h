@@ -8,7 +8,6 @@
 
 
 void Test_Symbole(CODES_TOKENS cl, ERREUR_TOKENS COD_ERR);
-//boolean ajouter_symbole();
 // void FUNCTION();
 
 void AFF();
@@ -24,6 +23,7 @@ void POUR();
 void INST();
 void REPEAT();
 void PRINT();
+
 
 
 

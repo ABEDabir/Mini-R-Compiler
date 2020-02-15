@@ -10,6 +10,7 @@ int main(int argc, char **argv)
         printf("Usage : %s FILE\n", argv[0]);
         exit(0);
     }
+    printf("La liste des tokens : \n");
     ligne = 1;
     col = 1;
     init_table_symbole();
@@ -22,6 +23,8 @@ int main(int argc, char **argv)
         INST();
     } while(Car_Cour!=EOF);
 
+    afficher_table_symbole();
+    printf("Le pseudo-code :\n\n");
     for (int i = 0; i <= PC; i++)
     {
         if (PCode[i].mne == LDI || PCode[i].mne == LDA || PCode[i].mne == INT || PCode[i].mne == BZE || PCode[i].mne == BRN)

@@ -1,10 +1,12 @@
-a = 5
-b = 8
-i = 0
-while (i < 5){
-	
-	a = a + i
-	i = i + 1
-	b = b - i
-	
+ b = 2
+ a <- 1
+if(a == 1){
+    b <- 20
 }
+repeat {
+
+   a = a + 3022
+
+   if ( a >= 23358) break}
+
+a = 10

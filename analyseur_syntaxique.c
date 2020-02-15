@@ -167,7 +167,7 @@ void TANTQUE(){
         sym_suiv();
         INST();
     } while(Sym_Cour.cls != AF_TOKEN);
-    printf("waiting\n");
+
     Test_Symbole(AF_TOKEN,AF_ERR);
     PCode[pc].suite = PC + 1;
 }
@@ -217,18 +217,20 @@ void REPEAT(){
     Test_Symbole(REPEAT_TOKEN,REPEAT_ERR);
     int pc = PC;
     Test_Symbole(AO_TOKEN,AO_ERR);
-    do
+
+    while(Sym_Cour.cls != IF_TOKEN)
     {
-        sym_suiv();
         INST();
-    } while(Sym_Cour.cls == IF_TOKEN);
-    if(Sym_Cour.cls == IF_TOKEN){
-        Test_Symbole(PO_TOKEN,PO_ERR);
-        COND();
-        generer_val(BZE, pc + 1);
-        Test_Symbole(PF_TOKEN,PF_ERR);
-        Test_Symbole(BREAK_TOKEN,BREAK_ERR);
+        sym_suiv();
     }
+    //if(Sym_Cour.cls == IF_TOKEN){
+    Test_Symbole(IF_TOKEN,IF_ERR);
+    Test_Symbole(PO_TOKEN,PO_ERR);
+    COND();
+    generer_val(BZE, pc + 1);
+    Test_Symbole(PF_TOKEN,PF_ERR);
+    Test_Symbole(BREAK_TOKEN,BREAK_ERR);
+
     Test_Symbole(AF_TOKEN,AF_ERR);
 }
 

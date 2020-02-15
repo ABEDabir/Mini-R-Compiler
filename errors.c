@@ -43,11 +43,12 @@ char *Erreur[] = {
 
 void afficher_Erreur(ERREUR_TOKENS COD_ERR)
 {
-    printf("%s (%d,%d) \n", Erreur[COD_ERR], ligne, col);
-    printf("%s\n",Sym_Cour.nom);
+    printf("Erreur syntaxique : %s \n", Erreur[COD_ERR]);
+    //printf("%s\n",Sym_Cour.nom);
     exit(EXIT_FAILURE);
 }
 void afficher_erreur_semantique(char *Symbole){
     printf("Erreur semantique : ");
     printf("La variable %s n'existe pas!\n", Symbole);
+    exit(EXIT_FAILURE);
 }
