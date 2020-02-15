@@ -156,7 +156,7 @@ void sym_suiv()
         Car_Cour=fgetc(file);
     }
 
-    if(Car_Cour == '\n') {
+    if(Car_Cour == '\n' || Car_Cour == '\r') {
         Car_Cour=fgetc(file);
         return;
     }
